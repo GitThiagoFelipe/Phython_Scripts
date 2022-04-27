@@ -7,22 +7,21 @@ user = input("Entre com seu usuário: ")
 password = getpass.getpass()
 tn = telnetlib.Telnet(host)
 
-tn.read_until("Username: ")
-tn.write(user + "\n")
+tn.read_until(b"Username: ")
+tn.write(user.encode("ascii") + b"\n")
 if password:
-    tn.read_until("Password: ")
-    tn(password + "\n")
+    tn.read_until(b"Password: ")
+    tn(password.encode("ascii") + b"\n")
 
-tn.write("enable\n")
-tn.write("cisco\n")
-tn.write("config t\n")
-tn.write("int lo0\n")
-tn.write("ip add 1.1.1.1 255.255.255.255\n")
-tn.write("end\n")
-tn.write("exit\n")
+tn.write(b"enable\n")
+tn.write(b"cisco\n")
+tn.write(b"config t\n")
+tn.write(b"int lo0\n")
+tn.write(b"ip add 1.1.1.1 255.255.255.255\n")
+tn.write(b"end\n")
+tn.write(b"exit\n")
 
-print
-tn.read_all()
+print(tn.read_all().decode("ascii"))
 
 
 
