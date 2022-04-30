@@ -17,9 +17,9 @@ for EachSwitche in IP_Switches:
 
     tn.write(b"config t\n")
 
-    for n_vlans in range(2,4):
-        tn.write("vlan " + str(n_vlans) + "\n")
-        tn.write("name Phyton_VLAN_" + str(n_vlans) + "\n")
+    for n_vlans in range(2,51):
+        tn.write(b"vlan " + str(n_vlans).encode("ascii") + b"\n")
+        tn.write(b"name Phyton_VLAN_" + str(n_vlans).encode("ascii") + b"\n")
 
     tn.write(b"end\n")
     tn.write(b"exit\n")
